@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX_JSON_2</title>
+</head>
+<body>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+	<script>
+		
+		var button = $('<button></button>')
+			.text('Charger !')
+			.css({
+				"font-size": "30px",
+				"color" : "blue"});
+		$('body').append(button);
+		
+		button.click(function() {
+			$.getJSON('https://jsonplaceholder.typicode.com/posts', function(data) { //1ère méthode en mettant function dans le getJSON
+			//$.getJSON('https://jsonplaceholder.typicode.com/posts') autre méthode en mettant un .done
+			//	.done(function(data) {
+				var article = $('<div></div>').addClass('article');
+				$.each(data, function(i, j) { //1ère méthode avec .each
+				// for(var i = 0, i < data.length, i++) { //2ème méthode avec for
+					// var j = data[i];
+					var li = $('<h2>' + j.title + '</h2>' + '<p>' + j.body + '</p>');
+					$(article).append(li);
+					$('body').append(article);
+				});
+			});
+		});
+
+	</script>
+
+</body>
+</html>

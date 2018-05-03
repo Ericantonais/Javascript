@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Listes</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<style>
+		#liste-cible li:first-of-type .fa-arrow-up {
+		display: none;}
+		#liste-cible li:last-of-type .fa-arrow-down {
+		display: none;}
+	</style>
+</head>
+<body>
+	<div>
+		<span class="fa fa-arrow-up"></span>
+		<span class="fa fa-arrow-down"></span>
+		<input type="text"/>
+		<button id="ajouter">Ajouter</button>
+		<button id="supprimer">Supprimer</button>
+		<ul id="liste-cible"></ul>
+	</div>
+	<div>
+		<h1>Exo 1 – Ajouter</h1>
+		<p>En HTML, créer une liste vide (non ordonnée), un input[type=text] et un bouton d'action «ajouter».</p>
+		<p>En JS: Au click sur «ajouter», insérer un élément de liste (LI) dans le DOM et lui associer le contenu du champs texte.</p>
+		<p>Si le champs texte est vide, indiquer une erreur à l'utilisateur et empêcher l'insertion.</p>
+
+		<h1>Exo 2 – Supprimer</h1>
+		<p>En HTML, ajouter un bouton d'action «supprimer».</p>
+		<p>Modifier le programme pour associer un input[type=checkbox] à chaque élément ajouté à la liste.</p>
+		<p>Au click sur «supprimer», tous les éléments cochés seront retirés de la liste.</p>
+		<p>Si la liste est vide, l'indiquer à l'utilisateur.</p>
+
+		<h1>Exo 3 – Déplacer</h1>
+		<p>Modifier le programme pour associer deux icônes d'action «déplacer» à chaque élément de liste créé.</p>
+		<p>Utiliser par exemple ces icônes:</p>
+		<ul>
+			<li>http://fortawesome.github.io/Font-Awesome/icon/caret-up/</li>
+			<li>http://fortawesome.github.io/Font-Awesome/icon/caret-down/</li>
+		</ul>
+		<p>L'action «déplacer» a deux comportements:</p>
+		<ul>
+			<li>Au click sur «up», remonter le LI correspondant d'un niveau dans la liste.</li>
+			<li>Au click sur «down», descendre le LI correspondant d'un niveau dans la liste.</li>
+		<p>Faire attention aux cas limites: si le LI manipulé est le premier ou le dernier de la liste.</p>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>

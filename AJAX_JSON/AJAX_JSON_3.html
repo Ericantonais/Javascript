@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX_JSON_3</title>
+    <style type="text/css">
+        #container {
+            display: flex;
+            justify-content: space-between;}
+
+        #container > div {
+            border: 1px solid #999;
+            flex: 50%;
+            padding: 0.5vw;}
+
+        #loader {
+            display: none;}
+
+    </style>
+</head>
+<body>
+
+    <button>Charger</button>
+    <div id="container">
+        <div>
+            <h2>Albums</h2>
+            <img id="loader" src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" >
+            <section class="gauche">
+                <ul>
+                </ul>
+            </section>
+        </div>
+        <div>
+            <h2>Contenu de l'album</h2>
+            <section class="droite"></section>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    <script>
+    $(document).ready(function() {
+        var btn = $('button');
+        var gauche = $('.gauche');
+        var droite = $('.droite');
+        var loader = $('#loader');
+
+        btn.on('click', function() {
+            $.ajax({
+                url: 'https://jsonplaceholder.typicode.com/albums',
+                beforeSend: function() {
+                    loader.show();
+                }
+            }).done(function(albumList) {
+                var ul = gauche.find('ul');
+
+                var nbExistants = ul.find('li').length;
+
+                $.each(albumList, function(index, album) {
+                    if(index <= nbExistants || index > nbExistants + 5) {
+                        return true;
+                    }
+
+                    var li = $('<li>');
+
+                    var link = $('<a>').addClass('album');
+                    
+                    link
+                        .text(album.title)
+                        .attr('href', "#")
+                        .attr('data-album_id', album.id);
+
+                    li.append(link);
+                    ul.append(li);
+                });
+                ul.appendTo(gauche);
+
+
+            }).always(function() {
+                loader.hide();
+            });
+        });
+
+        gauche.on('click', 'a.album', function(evt) {
+            evt.preventDefault();
+            droite.empty();
+
+            var albumId = $(this).data('album_id');
+            var photosUrl = 'https://jsonplaceholder.typicode.com/albums/' + albumId + '/photos';
+
+            $.ajax({
+                url: photosUrl
+            }).done(function(albumContent) {
+                for(var i = 0; i < albumContent.length; i++) {
+                    var photo = albumContent[i];
+                    var img = $('<img/>').attr('src', photo.thumbnailUrl);
+                    img.appendTo(droite);
+                }
+            });
+        })
+    });
+    </script>
+
+</body>
+</html>

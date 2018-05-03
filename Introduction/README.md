@@ -1,0 +1,1 @@
+Quelques petits exercices introductifs en Javascript.

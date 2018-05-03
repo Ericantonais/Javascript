@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX_XML</title>
+	<script src="script.js"></script>
+	<style>
+		#main_wrap {
+			display: flex;}
+
+		#sidebar, #main_content {
+			width: 40%;}
+
+		#nav_main a {
+			pointer-events: none;}
+
+		.is-active, .is-active a {
+			color: firebrick;
+			font-weight: bold;}
+	</style>
+</head>
+<body>
+	<header id="header_main">
+		<span>header</span>
+	</header>
+	<div id="main_wrap">
+		<aside id="sidebar">
+			<h2 class="title">aside</h2>
+			<nav id="nav_main">
+				<ul class="list">
+					<li class="item" data-page="home">
+						<a href="">home</a>
+					</li>
+					<li class="item" data-page="about">
+						<a href="">about</a>
+					</li>
+					<li class="item" data-page="contact">
+						<a href="">contact</a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+		<main id="main_content">
+			<h1 class="title">main</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro minus id nisi labore voluptates quam, ratione cumque nobis quis perferendis tempora. Porro, alias quia incidunt, id sapiente dolorum eaque placeat.</p>
+		</main>
+	</div>
+	<button id="button">Button</button>
+	<footer id="footer_main">
+		<span>&copy;owlab@simplon-aulnay-2018</span>
+	</footer>
+</body>
+</html>
+
