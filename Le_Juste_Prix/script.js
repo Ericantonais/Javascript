@@ -13,7 +13,7 @@ start();
 function submit() {
 	var input = Number(document.querySelector(".input").value.trim());
 	if(i == 0) {
-		answer.textContent = "Vous avez perdu. Click for restart.";
+		answer.textContent = `Vous avez perdu. La réponse était : ${nombre}. Click for restart.`;
 		left.addEventListener("click", function() {
 			restart();
 		});
